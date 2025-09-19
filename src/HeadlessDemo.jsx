@@ -44,6 +44,7 @@ export default function SlidingSidebarLayout() {
         padding: "1rem",
         overflow: "auto",
         height: `calc(100vh - ${TOPBAR_HEIGHT}px)`,
+       
     };
 
     return (
@@ -54,7 +55,7 @@ export default function SlidingSidebarLayout() {
                     <Button
                         icon="pi pi-bars"
                         className="p-button-text p-button-plain mr-2"
-                        onClick={() => setSidebarVisible(true)}
+                        onClick={() => setSidebarVisible(!sidebarVisible)}
                     />
                     <h3 style={{ margin: 0 }}>Mi App</h3>
                 </div>
@@ -67,12 +68,13 @@ export default function SlidingSidebarLayout() {
 
             {/* Sidebar oficial de PrimeReact */}
             <Sidebar
+                
                 visible={sidebarVisible}
                 onHide={() => setSidebarVisible(false)}
                 baseZIndex={1000}
                 position="left"
                 showCloseIcon={false}
-                style={{ width: "250px", paddingTop: `${TOPBAR_HEIGHT}px` }}
+                style={{ width: "250px", paddingTop: `${TOPBAR_HEIGHT}px`, color: "rgb(55, 65, 81)!important" }}
                 modal={isMobile} // 👈 en mobile hace overlay, en desktop es fijo
             >
                 <ul className="list-none p-0 m-0">
