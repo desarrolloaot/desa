@@ -35,13 +35,15 @@ export default function SlidingSidebarLayout() {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "0 1rem",
+        background: "rgb(62, 90, 126)",
+      
     };
 
     const contentStyle = {
-        marginTop: TOPBAR_HEIGHT,
+       
         marginLeft: !isMobile && sidebarVisible ? 250 : 0, // solo push en desktop
         transition: "margin-left 0.3s ease",
-        padding: "1rem",
+      
         overflow: "auto",
         height: `calc(100vh - ${TOPBAR_HEIGHT}px)`,
        
@@ -74,7 +76,8 @@ export default function SlidingSidebarLayout() {
                 baseZIndex={1000}
                 position="left"
                 showCloseIcon={false}
-                style={{ width: "250px", paddingTop: `${TOPBAR_HEIGHT}px`, color: "rgb(55, 65, 81)!important" }}
+                style={{ width: "250px", paddingTop: `${TOPBAR_HEIGHT}px`, color: "rgb(55, 65, 81)!important"
+            }}
                 modal={isMobile} // 👈 en mobile hace overlay, en desktop es fijo
             >
                 <ul className="list-none p-0 m-0">
