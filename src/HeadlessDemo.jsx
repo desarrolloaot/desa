@@ -61,11 +61,7 @@ export default function SlidingSidebarLayout() {
                     />
                     <h3 style={{ margin: 0 }}>Mi App</h3>
                 </div>
-                <Button
-                    label={sidebarVisible ? "Ocultar menú" : "Mostrar menú"}
-                    onClick={() => setSidebarVisible(!sidebarVisible)}
-                    className="p-button-sm p-button-outlined"
-                />
+                
             </header>
 
             {/* Sidebar oficial de PrimeReact */}
