@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
+import { Card } from 'primereact/card';
 
 export default function SlidingSidebarLayout() {
     const MOBILE_BREAKPOINT = 1300; // px
@@ -43,7 +44,7 @@ export default function SlidingSidebarLayout() {
        
         marginLeft: !isMobile && sidebarVisible ? 250 : 0, // solo push en desktop
         transition: "margin-left 0.3s ease",
-      
+        marginTop:56,
         overflow: "auto",
         height: `calc(100vh - ${TOPBAR_HEIGHT}px)`,
        
@@ -105,7 +106,9 @@ export default function SlidingSidebarLayout() {
                     El contenido se ajusta al espacio disponible.  
                     En desktop el sidebar empuja, en mobile hace overlay.
                 </p>
+                
                 <div style={{ height: 1200, background: "linear-gradient(#fff, #eee)" }} />
+                
             </main>
         </div>
     );

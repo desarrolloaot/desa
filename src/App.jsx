@@ -10,7 +10,7 @@ function App() {
   
   return (
           <div>
-          <Button onClick={() => setMenuVisible(true)}>Menu</Button>
+         
           <HeadlessDemo visible={menuVisible} onHide={() => setMenuVisible(false)} />
           </div>
         
