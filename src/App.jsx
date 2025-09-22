@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 export default function Layout() {
   const [sidebarVisible, setSidebarVisible] = useState(true);
@@ -30,8 +31,9 @@ export default function Layout() {
           </Button>
           <Navbar.Brand href="#home">Sistema Gestión de Prestadores - O.S.P.I.T.</Navbar.Brand>
           <Nav>
-            <Nav.Link href="#perfil">Perfil</Nav.Link>
-            <Nav.Link href="#logout">Salir</Nav.Link>
+          <Nav.Link><i class="bi bi-person-bounding-box fs-5"></i></Nav.Link>
+            
+            <Nav.Link href="#logout"  className="d-flex align-items-center">Salir</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
