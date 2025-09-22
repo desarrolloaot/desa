@@ -1,127 +1,69 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Button, Offcanvas, Card } from "react-bootstrap";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function SlidingSidebarLayout() {
-  const MOBILE_BREAKPOINT = 1300; // px
-  const TOPBAR_HEIGHT = 56;       // px
-  const SIDEBAR_WIDTH = 250;      // px
+export default function Layout() {
+  const [sidebarVisible, setSidebarVisible] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1300);
 
-  const [sidebarVisible, setSidebarVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < MOBILE_BREAKPOINT);
+  const toggleSidebar = () => setSidebarVisible(!sidebarVisible);
 
-  // Detecta si es mobile o desktop
+  // 👇 Detecta cambios de tamaño de pantalla
   useEffect(() => {
-    const handleResize = () => {
-      const mobile = window.innerWidth < MOBILE_BREAKPOINT;
-      setIsMobile(mobile);
-      if (!mobile) setSidebarVisible(false); // desktop inicia cerrado
-    };
-
+    const handleResize = () => setIsMobile(window.innerWidth < 1300);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <div>
-      {/* Header */}
-      <Navbar
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: TOPBAR_HEIGHT,
-          zIndex: 1100,
-          display: "flex",
-          alignItems: "center",
-          padding: "0 1rem",
-          background: "linear-gradient(135deg, #cccccc, #0b5ed7)",
-          color: "#fff",
-        }}
-      >
-        <Button
-          variant="outline-light"
-          className="me-2"
-          onClick={() => setSidebarVisible(!sidebarVisible)}
-        >
-          ☰
-        </Button>
-        <Navbar.Brand style={{ margin: 0 }}>Mi App</Navbar.Brand>
+      {/* 🔹 TOPBAR FIJO */}
+      <Navbar  variant="dark" fixed="top" className="back_topbar">
+        <Container fluid>
+          <Button
+            variant="outline-light"
+            onClick={toggleSidebar}
+            className="btn-sm"
+           
+          >
+            ☰
+          </Button>
+          <Navbar.Brand href="#home">Sistema Gestión de Prestadores - O.S.P.I.T.</Navbar.Brand>
+          <Nav>
+            <Nav.Link href="#perfil">Perfil</Nav.Link>
+            <Nav.Link href="#logout">Salir</Nav.Link>
+          </Nav>
+        </Container>
       </Navbar>
 
-      {/* Contenedor principal */}
-      <div style={{ display: "flex", flexDirection: "row", marginTop: TOPBAR_HEIGHT }}>
-        {/* Sidebar Desktop */}
-        {!isMobile && (
-          <div
-            style={{
-              width: SIDEBAR_WIDTH,
-              height: `calc(100vh - ${TOPBAR_HEIGHT}px)`,
-              background: "#f8f9fa",
-              position: "fixed",
-              top: TOPBAR_HEIGHT,
-              left: sidebarVisible ? 0 : -SIDEBAR_WIDTH, // desliza desde la izquierda
-              overflowY: "auto",
-              zIndex: 1040,
-              boxShadow: "2px 0 5px rgba(0,0,0,0.1)",
-              transition: "left 0.3s ease",
-              padding: "1rem",
-            }}
-          >
-            <ul className="list-unstyled">
-              <li className="mb-2">🏠 Dashboard</li>
-              <li className="mb-2">⚙️ Configuración</li>
-              <li className="mb-2">👥 Usuarios</li>
-            </ul>
-          </div>
-        )}
+      {/* 🔹 SIDEBAR */}
+      <div
+        className={`sidebar ${sidebarVisible ? "show" : "hide"} ${
+          isMobile ? "mobile" : "desktop"
+        }`}
+      >
+        <Nav className="flex-column w-100">
+          <Nav.Link href="#inicio">Cta. Corriente</Nav.Link>
+          <Nav.Link href="#config">Subir Factura</Nav.Link>
+          <Nav.Link href="#config">Administrar</Nav.Link>
+          <Nav.Link href="#ayuda">Ayuda</Nav.Link>
+        </Nav>
+      </div>
 
-        {/* Sidebar Mobile */}
-        {isMobile && (
-          <Offcanvas
-            show={sidebarVisible}
-            onHide={() => setSidebarVisible(false)}
-            backdrop={true}
-          >
-            <Offcanvas.Header closeButton>
-              <Offcanvas.Title>Menú</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-              <ul className="list-unstyled">
-                <li className="mb-2">🏠 Dashboard</li>
-                <li className="mb-2">⚙️ Configuración</li>
-                <li className="mb-2">👥 Usuarios</li>
-              </ul>
-            </Offcanvas.Body>
-          </Offcanvas>
-        )}
-
-        {/* Contenido principal */}
-        <main
-          style={{
-            flex: 1, // ocupa todo el espacio restante
-            marginLeft: !isMobile && sidebarVisible ? SIDEBAR_WIDTH : 0, // empuja contenido solo en desktop
-            padding: "1rem",
-            height: `calc(100vh - ${TOPBAR_HEIGHT}px)`,
-            overflowY: "auto",
-            transition: "margin-left 0.3s ease",
-          }}
-        >
-          <h1>Contenido principal</h1>
-          <p>
-            En desktop, el sidebar desplaza el contenido a la derecha. <br />
-            En mobile, el sidebar hace overlay sobre el contenido.
-          </p>
-
-          <Card className="mb-3">
-            <Card.Body>
-              <Card.Title>Ejemplo de Card</Card.Title>
-              <Card.Text>Esto es un Card de ejemplo con React-Bootstrap.</Card.Text>
-            </Card.Body>
-          </Card>
-
-          <div style={{ height: 1200, background: "linear-gradient(#fff, #eee)" }} />
-        </main>
+      {/* 🔹 CONTENIDO PRINCIPAL */}
+      <div
+        className={`content ${
+          sidebarVisible && !isMobile ? "expanded" : "collapsed"
+        }`}
+      >
+        <h1>Bienvenido</h1>
+        <p>
+          Este es el contenido principal. El sidebar empuja en pantallas grandes
+          y se superpone en pantallas chicas.
+        </p>
+        {Array.from({ length: 50 }).map((_, i) => (
+          <p key={i}>Fila de contenido #{i + 1}</p>
+        ))}
       </div>
     </div>
   );

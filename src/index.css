@@ -1,68 +1,76 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* Sidebar base */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.navbar {
+  height: 40px; /* fija explícitamente la altura */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.back_topbar{
+  background: linear-gradient(to bottom, rgb(120, 140, 180) 0%, rgb(62, 90, 126) 100%);
+
+
+
+
+  font-family: 'Roboto';
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+.sidebar {
+  position: fixed;
+  top: 40px;
+  height: calc(100vh - 40px);
+  width: 250px;
+  background: #f8f9fa;
+  border-right: 1px solid #ddd;
+  padding-top: 1rem;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1040; /* para que quede arriba del contenido en modo mobile */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.sidebar.hide {
+  transform: translateX(-100%);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.sidebar.show {
+  transform: translateX(0);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Sidebar en modo desktop (empuja contenido) */
+.sidebar.desktop {
+  left: 0;
+}
+
+/* Sidebar en modo mobile (overlay) */
+.sidebar.mobile {
+  left: 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenido */
+.content {
+  position: fixed;
+  top: 46px;
+  height: calc(100vh - 40px);
+  padding: 1rem;
+  overflow-y: auto;
+  transition: left 0.3s ease, width 0.3s ease;
+}
+
+/* Desktop: el contenido se expande cuando sidebar está visible */
+.content.expanded {
+  left: 250px;
+  width: calc(100% - 250px);
+}
+
+/* Desktop: cuando sidebar está oculto */
+.content.collapsed {
+  left: 0;
+  width: 100%;
+}
+
+/* Mobile: siempre ocupa toda la pantalla (el sidebar es overlay) */
+@media (max-width: 1299px) {
+  .content {
+    left: 0 !important;
+    width: 100% !important;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
+
