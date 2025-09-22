@@ -29,11 +29,11 @@ export default function Layout() {
           >
             ☰
           </Button>
-          <Navbar.Brand href="#home">Sistema Gestión de Prestadores - O.S.P.I.T.</Navbar.Brand>
+          <Navbar.Brand href="#home" className="text-white">Sistema Gestión de Prestadores - O.S.P.I.T.</Navbar.Brand>
           <Nav>
-          <Nav.Link><i class="bi bi-person-bounding-box fs-5"></i></Nav.Link>
+          <Nav.Link><i class="bi bi-person-bounding-box fs-5 text-light"></i></Nav.Link>
             
-            <Nav.Link href="#logout"  className="d-flex align-items-center">Salir</Nav.Link>
+            <Nav.Link href="#logout"  className="d-flex align-items-center text-warning">Salir</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
