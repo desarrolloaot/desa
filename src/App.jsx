@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
-import FormSubir from "./features/SubirFacturas/FormSubir";
+
 import React, { Suspense, lazy } from "react";
-const UploadInvoicePage = lazy(() => import("./features/SubirFacturas/FormSubir"));
+
+const FormSubir = lazy(() => import("./features/SubirFacturas/FormSubir"));
+
 
 
 export default function App() {

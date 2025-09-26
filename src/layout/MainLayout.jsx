@@ -27,9 +27,22 @@ export default function MainLayout() {
                     sidebarVisible={sidebarVisible} 
                     isMobile={isMobile} 
                 />
-                <main className="flex-grow-1 p-3 bg-light">
+                <main
+                    className={`content ${
+                    sidebarVisible && !isMobile ? "expanded" : "collapsed"
+                    }`}
+                >
+                    <h1>Bienvenido</h1>
+                    <p>
+                    Este es el contenido principal. El sidebar empuja en pantallas grandes
+                    y se superpone en pantallas chicas.
+                    </p>
+                    {Array.from({ length: 50 }).map((_, i) => (
+                    <p key={i}>Fila de contenido #{i + 1}</p>
+                    ))}
                     <Outlet />
                 </main>
+                
             </div>
         </div>
     );
