@@ -1,13 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Nav } from "react-bootstrap";
+import  { useState, useEffect } from "react";
+import { API_BASE_URL } from "../config/config";
 
 
 export default function Sidebar({ sidebarVisible, isMobile }) {
+  
     const [apps, setApps] = useState([]);
 
         useEffect(() => {
-            fetch("http://localhost:8000/api/Sidebar/apps.php")
+            fetch(`${API_BASE_URL}/Sidebar/apps.php`)
             .then(res => res.json())
             .then(data => setFacturas(data));
         }, []);
