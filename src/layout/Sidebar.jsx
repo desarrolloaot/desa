@@ -1,25 +1,40 @@
-
-import { Navbar, Nav, Container, Button } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import ListGroup from 'react-bootstrap/ListGroup';
-import { BsList } from "react-icons/bs";
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { Nav } from "react-bootstrap";
 
 
 export default function Sidebar({ sidebarVisible, isMobile }) {
-  
+    const [apps, setApps] = useState([]);
 
+        useEffect(() => {
+            fetch("http://localhost:8000/api/Sidebar/apps.php")
+            .then(res => res.json())
+            .then(data => setFacturas(data));
+        }, []);
+
+  
     return (
-        <div>
-            {/* 🔹 SIDEBAR */}
-            <div className={`sidebar ${sidebarVisible ? "show" : "hide"} ${isMobile ? "mobile" : "desktop"}`}>
-                <Nav className="flex-column w-100 font-roboto">
-                    <Nav.Link href="#SubirFactura"><i className="bi bi-bank"></i> Cta. Corriente</Nav.Link>
-                    <Nav.Link href="#SubirFactura"><i className="bi bi-receipt-cutoff"></i> Subir Factura</Nav.Link>
-                    <Nav.Link href="#SubirFactura"><i className="bi bi-activity"></i> Administrar</Nav.Link>
-                    <Nav.Link href="#SubirFactura"><i className="bi bi-question-circle"></i> Ayuda</Nav.Link>
-                </Nav>
-            </div>
-        </div> 
-        )
-    }
+
+      
+
+    <div className={`sidebar ${sidebarVisible ? "show" : "hide"} ${isMobile ? "mobile" : "desktop"}`}>
+      <Nav className="flex-column w-100 font-roboto">
+        <Nav.Link as={NavLink} to="/" end>
+          <i className="bi bi-house"></i> Inicio
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="/SubirFactura">
+          <i className="bi bi-receipt-cutoff"></i> Subir Factura
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="/AdministrarFactura">
+          <i className="bi bi-activity"></i> Administrar Factura
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="/CuentaCorriente">
+          <i className="bi bi-bank"></i> Cuenta Corriente
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="/CuentaCorriente">
+        <i className="bi bi-question-circle"> Ayuda</i>
+        </Nav.Link>
+      </Nav>
+    </div>
+  );
+}
