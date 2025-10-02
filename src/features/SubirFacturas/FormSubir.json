@@ -1,0 +1,27 @@
+[
+  {
+    "name": "numeroFactura",
+    "label": "Número de Factura",
+    "type": "text",
+    "rules": {
+      "required": "El número de factura es obligatorio"
+    }
+  },
+  {
+    "name": "fechaFactura",
+    "label": "Fecha de la Factura",
+    "type": "date",
+    "rules": {
+      "required": "La fecha es obligatoria"
+    }
+  },
+  {
+    "name": "tipoFactura",
+    "label": "Tipo de Factura",
+    "type": "select",
+    "options": [],
+    "rules": {
+      "required": "Debes seleccionar un tipo de factura"
+    }
+  }
+]
