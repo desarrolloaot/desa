@@ -2,7 +2,7 @@ import { useForm, Controller } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
 
 export function DynamicForm({ fields, onSubmit }) {
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit,  formState: { errors }, } = useForm();
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -18,7 +18,12 @@ export function DynamicForm({ fields, onSubmit }) {
                 case "text":
                 case "number":
                 case "date":
-                  return <Form.Control type={field.type} {...controllerField} />;
+                  return (
+				  <>
+				  <Form.Control type={field.type} isInvalid={!!errors[field.name]}  {...controllerField} />
+				  <Form.Control.Feedback type="invalid">
+                        {errors[field.name]?.message}
+                      </Form.Control.Feedback></>)
                 case "checkbox":
                   return (
                     <Form.Check
