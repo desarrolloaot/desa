@@ -33,8 +33,8 @@ export default function App() {
 
           <Suspense fallback={<div>Cargando...</div>}>
             <Routes>
-              <Route element={<MainLayout sidebarVisible={sidebarVisible} isMobile={isMobile} /> } >
-                	<Route index element={<div>Bienvenido a la aplicación</div>} />
+              <Route element={<MainLayout  sidebarVisible={sidebarVisible} isMobile={isMobile} /> } >
+                	<Route index element={<div className="ms-3">Bienvenido a la aplicación</div>} />
                 	<Route path="/SubirFactura" element={<FormSubir />} />
               </Route>
             </Routes>

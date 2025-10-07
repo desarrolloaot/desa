@@ -52,7 +52,8 @@ export function DynamicForm({ fields, onSubmit }) {
         </Form.Group>
       ))}
 
-      <Button type="submit">Enviar</Button>
-    </Form>
+      <Button type="submit" className="btn btn-sm me-2">Enviar</Button>
+	  
+    </Form> 
   );
 }
