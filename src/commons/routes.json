@@ -1,0 +1,38 @@
+[
+  {
+    "path": "/Home",
+    "label": "Inicio",
+    "icon": "bi-house",
+    "component": "Home"
+  },
+  {
+    "path": "/SubirFacturas",
+    "label": "Subir Factura",
+    "icon": "bi-receipt-cutoff",
+    "component": "FormSubir"
+  },
+  {
+    "path": "/AdministrarFactura",
+    "label": "Administrar Factura",
+    "icon": "bi-activity",
+    "component": "AdministrarFactura"
+  },
+  {
+    "path": "/CuentaCorriente",
+    "label": "Cuenta Corriente",
+    "icon": "bi-bank",
+    "component": "CuentaCorriente"
+  },
+  {
+    "path": "/Ayuda",
+    "label": "Ayuda",
+    "icon": "bi-question-circle",
+    "component": "Ayuda"
+  },
+  {
+    "path": "/Login",
+    "label": "Login",
+    "icon": "bi-question-circle",
+    "component": "Login"
+  }
+]

@@ -1,0 +1,11 @@
+/*
+
+ "name": "ptoVta",
+    "label": "P. Venta",
+    "type": "select",
+    "options": [],
+    "rules": {
+      "required": "Debes seleccionar un tipo de factura"
+    }
+
+    */

@@ -1,0 +1,103 @@
+[
+  {
+    "name": "tipoCmp",
+    "label": "Comprobante",
+    "type": "text",
+    "readOnly": true,
+    "md": 2
+
+   
+  },
+ 
+  {
+    "name": "letra",
+    "label": "Letra",
+    "type": "text",
+    "md": 1
+   
+  },
+  {
+    "name": "ptoVta",
+    "label": "P. Venta",
+    "type": "text",
+    "md": 1
+    
+  },
+  {
+    "name": "ptoVta",
+    "label": "P. Venta",
+    "type": "text",
+    "md": 2
+    
+  },
+  {
+    "name": "nroCmp",
+    "label": "Número",
+    "type": "text",
+    "md": 2
+    
+  },
+  {
+    "name": "codAut",
+    "label": "CAE",
+    "type": "text",
+    "md": 2
+    
+  },
+  {
+    "name": "importe",
+    "label": "Importe",
+    "type": "text",
+    "md": 2
+    
+  },
+  {
+    "name": "fecha",
+    "label": "Fecha Factura",
+    "type": "text",
+    "md": 2
+    
+  },
+  
+  {
+    "name": "ptoVta",
+    "label": "Dni Beneficiario",
+    "type": "number",
+    "md": 2
+    
+  },
+  {
+    "name": "nomben",
+    "label": "Nombre Beneficiario",
+    "type": "text",
+    "md": 2
+    
+  },
+  {
+    "name": "prestacion",
+    "label": "Prestación",
+    "type": "select",
+    "md": 4
+    
+  },
+  {
+    "name": "cantidad",
+    "label": "Cantidad",
+    "type": "number",
+    "step": 1,
+    "md": 1
+    
+  },
+  {
+    "name": "depe",
+    "label": "Con Dependencia",
+    "type": "checkbox",
+    "md": 1
+    
+  }
+  
+
+ 
+]
+
+
